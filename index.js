@@ -1,12 +1,43 @@
-const express = require('express');
-const app = express();
-const Port = 3000;
 const path = require('path');
+const express = require('express');
+const { write } = require('fs');
+const app = express();
 app.use(express.json());
+const Port = 3000;
+
+
+//=>1st way to use winston logger 
+// const winston = require("winston");
+// const logger = winston.createLogger({
+//     transports: [new winston.transports.Console()],
+//   });
+
+
+//=>2nd way to use winston and morgan logger
+// const logger =require ('./logger.js');
+// const morgan =require ('morgan');
+// const morganFormat = ":method :url :status :response-time ms";
+// app.use(
+//     morgan(morganFormat, {
+//       stream: {
+//         write: (message) => {
+//           const logObject = {
+//             method: message.split(" ")[0],
+//             url: message.split(" ")[1],
+//             status: message.split(" ")[2],
+//             responseTime: message.split(" ")[3],
+//           };
+//           logger.info(JSON.stringify(logObject));
+//         },
+//       },
+//     })
+//   );
 
 let employee = [];
 let nextId = 1;
 
+
+//I Have used Winston logger and morgan logger for logging the things it will help in debugging the code errors
 // Route to calculate the sum of two numbers from query parameters
 app.get('/sum', (req, res) => {
     const a = parseFloat(req.query.a); // Convert to number
@@ -21,11 +52,13 @@ app.get('/sum', (req, res) => {
 
 // Route to send a welcome message
 app.get('/jatin', (req, res) => {
+    logger.info("This is an info message");
     res.send('Hello, welcome');
 });
 
 // Route to send a game-related message
 app.get('/game', (req, res) => {
+    logger.info('this is jatin youtuber FreeFire')
     res.send('Welcome Shubham, I am learning Express.js');
 });
 
