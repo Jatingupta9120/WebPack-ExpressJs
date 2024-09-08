@@ -18,8 +18,8 @@ This is a simple Express.js application that provides a basic API for managing e
 1. **Clone the Repository**:
 
     ```bash
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone https://github.com/Jatingupta9120/WebPack-ExpressJs.git
+    cd WebPack-ExpressJs
     ```
 
 2. **Install Dependencies**:
